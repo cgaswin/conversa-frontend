@@ -1,4 +1,5 @@
 import React from "react";
+import heroImg from "../assets/hero.png"
 
 const Landing = () => {
   return (
@@ -14,11 +15,11 @@ const Landing = () => {
 
       <main className="flex justify-center align-middle">
         <div className="flex">
-          <h1 className="uppercase">
+          <h1 className="uppercase font-out">
             Learning to speak english has never been easier
           </h1>
-          <div className="hidden sm:block">
-            <img src="../as" alt="" />
+          <div className="hidden sm:block sm:w-[350px] sm:h-[520px]">
+            <img src={heroImg} alt="hero image" />
           </div>
         </div>
         
