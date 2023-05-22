@@ -1,9 +1,62 @@
-import React from 'react'
+import React from "react";
+import Navbar from "../components/Navbar";
+import googleLogo from "../assets/google.svg";
 
 const Login = () => {
   return (
-    <div>Login</div>
-  )
-}
+    <>
+      <Navbar />
+      <div className="flex flex-col  justify-center items-center font-Outfit">
+        <h3 className="text-3xl">Welcome back</h3>
+        <p className="text-gray-400 pt-5 text-center mx-5">
+          We've missed you! Please sign in to catch up on what you've missed
+        </p>
+        <button className="flex mt-5 rounded-xl items-center px-20 py-2 border border-gray-300">
+          <img src={googleLogo} />
+          Login with Google
+        </button>
 
-export default Login
+        <p className="text-gray-400 mt-5">or</p>
+
+        <form className="mt-5 ">
+          <div className="flex flex-col">
+            <label htmlFor="email">Email</label>
+            <input
+              className="border mt-1 px-6 w-[350px] py-2 rounded-xl"
+              type="text"
+              name="email"
+              placeholder="Enter your email"
+            />
+          </div>
+
+          <div className="flex flex-col mt-5">
+            <label htmlFor="password">password</label>
+            <input
+              className="border mt-1 px-6 w-[350px] py-2 rounded-xl"
+              type="password"
+              name="email"
+              placeholder="Enter your password"
+            />
+          </div>
+
+          <div className="flex mt-6 justify-between ">
+            <div className="flex">
+            <input type="checkbox" id="remember-me" />
+            <label htmlFor="remember-me" className="ml-2">Remember me</label>
+            </div>
+
+            <p className="text-indigo-400">Forgot Password</p>
+          </div>
+
+          <button className="bg-black text-white mt-8 px-40 py-3 rounded-xl hover:shadow-sm hover:shadow-slate-400">
+            Login
+          </button>
+
+          
+        </form>
+      </div>
+    </>
+  );
+};
+
+export default Login;
