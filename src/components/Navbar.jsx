@@ -41,7 +41,7 @@ const Navbar = () => {
       </div>
 
       {isOpen && (
-        <div className="md:hidden py-5 px-5 z-10 shadow bg-white">
+        <div className="md:hidden py-5 px-5 z-50 shadow bg-white fixed right-0">
             <div className="flex justify-end pr-2 pt-1">
             <div onClick={toggleNav} className="-m-4">
               {isOpen && <RxCross2 size={20} />}
