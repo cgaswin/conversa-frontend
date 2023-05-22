@@ -14,16 +14,22 @@ const Landing = () => {
               learning to speak english has never been easier
             </h2>
             <div className="flex gap-5 md:ml-12 md:justify-normal justify-center mt-10 md:mt-5 ">
-          <button className="bg-black text-white px-6 py-3 rounded-xl hover:shadow-sm hover:shadow-slate-400">
-            <NavLink to="/login">Login</NavLink>
-          </button>
-          <button className="border border-black text-black  px-6 py-3 rounded-xl hover:shadow-sm hover:shadow-slate-400">
-          <NavLink to="/signup">Signup</NavLink>
-          </button>
-        </div>
+              <NavLink
+                to="/login"
+                className="bg-black text-white px-6 py-3 rounded-xl hover:shadow-sm hover:shadow-slate-400"
+              >
+                Login
+              </NavLink>
+              <NavLink
+                to="/signup"
+                className="border border-black text-black  px-6 py-3 rounded-xl hover:shadow-sm hover:shadow-slate-400"
+              >
+                Signup
+              </NavLink>
+            </div>
           </div>
           <div className="hidden md:block">
-            <img src={heroImg} className="w-[340px] h-[520px]"/>
+            <img src={heroImg} className="w-[340px] h-[520px]" />
           </div>
         </div>
       </main>

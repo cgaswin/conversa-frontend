@@ -26,7 +26,7 @@ const Navbar = () => {
 
   return (
     <nav className="flex justify-between gap-3 px-2 py-8 ">
-      <div className="md:px-32 px-10 font-Outfit font-bold text-black-700 text-xl">LOGO</div>
+      <div className="md:px-32 px-10 font-Outfit font-bold text-black-700 text-xl cursor-pointer"><NavLink to="/">LOGO</NavLink></div>
       <ul className="hidden md:flex  px-20 gap-20 list-none">
             {menuItems.map((navItem) => (
               <li  className="font-Outfit font-regular text-xl   hover:text-indigo-400" key={navItem.title}>
