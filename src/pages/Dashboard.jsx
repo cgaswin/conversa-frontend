@@ -17,7 +17,7 @@ const Dashboard = () => {
             <p className="text-gray-400">Recent chats</p>
           </div>
           <div>
-            <button className="bg-black text-white flex items-center gap-2 justify-around w-auto px-10 py-5 mr-14 sm:px-10 sm:py-5 sm:mr-20 rounded-xl">
+            <button className="bg-black text-white flex items-center gap-2 justify-around w-auto px-10 py-5 mr-14 sm:px-10 sm:py-5 sm:mr-20 rounded-xl cursor-pointer transform transition duration-500 hover:md:scale-105">
               <AiOutlinePlus />
               Create New Chat
             </button>
