@@ -89,7 +89,7 @@ const DashboardNav = () => {
                 <NavLink to="/profile">
                   <div className="flex items-center">
                     <img src={person} />
-                    <p className="uppercase pl-2">Person</p>
+                    <p className="uppercase pl-2">Profile</p>
                   </div>
                 </NavLink>
               </div>
@@ -106,8 +106,8 @@ const DashboardNav = () => {
         </div>
       ) : (
         windowWidth ? (
-        <div className={`w-1/2 bg-white h-screen p-10 `}>
-          <div className="-ml-14 mt-20">
+        <div className={`w-1/4 border-r-2 bg-white h-screen p-10 `}>
+          <div className="-ml-14 -mt-10">
             <Avatar name={"Aswin"} />
             <div className=" mt-5 flex flex-col gap-6  ">
               <div
@@ -153,7 +153,7 @@ const DashboardNav = () => {
                 <NavLink to="/profile">
                   <div className="flex items-center">
                     <img src={person} />
-                    <p className="uppercase pl-2">Person</p>
+                    <p className="uppercase pl-2">Profile</p>
                   </div>
                 </NavLink>
               </div>
