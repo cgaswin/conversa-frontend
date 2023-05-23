@@ -13,7 +13,7 @@ const DashboardNav = () => {
   };
 
   return (
-    <div className="w-[250px] shadow-md  h-screen ">
+    <div className="md:w-1/3 w-full pr-10 shadow-md  h-screen ">
       <Avatar name={"Aswin"} />
       <div className=" mt-5 flex flex-col gap-6  ">
         <div
