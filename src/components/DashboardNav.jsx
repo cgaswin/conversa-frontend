@@ -4,6 +4,8 @@ import dashboard from "../assets/dashboard.svg";
 import chat from "../assets/chat.svg";
 import person from "../assets/person.svg";
 import logout from "../assets/logout.svg";
+import { NavLink } from "react-router-dom";
+import Chat from "../pages/Chat";
 
 const DashboardNav = () => {
   const [activeTab, setActiveTab] = useState("home");
@@ -22,6 +24,8 @@ const DashboardNav = () => {
           } `}
           onClick={() => handleTab("home")}
         >
+          <NavLink to ="/dashboard">
+          <div className="flex items-center">
           <img src={dashboard} />
           <p
             className={`uppercase pl-2 ${
@@ -30,6 +34,8 @@ const DashboardNav = () => {
           >
             Home
           </p>
+          </div>
+          </NavLink>
         </div>
 
         <div
@@ -38,8 +44,12 @@ const DashboardNav = () => {
           } `}
           onClick={() => handleTab("chat")}
         >
+          <NavLink to="/chat">
+            <div className="flex items-center">
           <img src={chat} />
           <p className="uppercase pl-2 ">chat</p>
+            </div>
+          </NavLink>
         </div>
 
         <div
@@ -48,8 +58,12 @@ const DashboardNav = () => {
           } `}
           onClick={() => handleTab("person")}
         >
+          <NavLink to="/profile">
+          <div className="flex items-center">
           <img src={person} />
           <p className="uppercase pl-2">Person</p>
+          </div>
+          </NavLink>
         </div>
 
         <div className="flex ml-20 fixed bottom-10 cursor-pointer ">
