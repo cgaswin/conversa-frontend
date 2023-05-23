@@ -57,7 +57,7 @@ const Signup = () => {
           </div>
 
           <button className="bg-black text-white mt-5 px-40 py-3 rounded-xl hover:shadow-sm hover:shadow-slate-400">
-            Login
+            Signup
           </button>
 
           
