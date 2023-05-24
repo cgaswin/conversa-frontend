@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import DashboardNav from "../components/DashboardNav";
 import bot from "../assets/bot.png";
 import { ImCross } from "react-icons/im";
 import { CiMicrophoneOn } from "react-icons/ci";
@@ -9,7 +8,6 @@ import ChatBoxRight from "../components/ChatBoxRight";
 
 const Chat = () => {
   const [themeValue, setThemeValue] = useState("");
-  const [showMenu, setShowMenu] = useState(true);
   const [chatReply,setChatReply] = useState("dummy message")
 
   const handleTheme = (event) => {
@@ -17,9 +15,7 @@ const Chat = () => {
   };
 
   return (
-    <div className="flex">
-      {showMenu && <DashboardNav />}
-      <div className="flex flex-col shadow-inner p-5 w-full mx-auto md:border-l md:b-l-black-2">
+      <div className="flex  flex-col shadow-inner p-5 w-full mx-auto md:border-l md:b-l-black-2">
         <div className="flex items-center justify-around gap-3 rounded-sm p-2 bg-slate-50">
           <div className="flex items-center gap-3 ">
             <img src={bot} />
@@ -55,7 +51,6 @@ const Chat = () => {
         </div>
         
       </div>
-    </div>
   );
 };
 

@@ -136,7 +136,7 @@ const DashboardNav = () => {
                 } `}
                 onClick={() => handleTab("chat")}
               >
-                <NavLink to="/chat">
+                <NavLink to="/dashboard/chat">
                   <div className="flex items-center">
                     <img src={chat} />
                     <p className="uppercase pl-2 ">chat</p>
@@ -150,7 +150,7 @@ const DashboardNav = () => {
                 } `}
                 onClick={() => handleTab("person")}
               >
-                <NavLink to="/profile">
+                <NavLink to="/dashboard/profile">
                   <div className="flex items-center">
                     <img src={person} />
                     <p className="uppercase pl-2">Profile</p>

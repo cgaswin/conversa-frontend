@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-import DashboardNav from "../components/DashboardNav";
+import React from "react";
+
 
 const Profile = () => {
-  const [showMenu, setShowMenu] = useState(true);
+
 
   return (
-    <div className="flex">
-      {showMenu && <DashboardNav />}
+    <div className="flex mx-auto">
       <div className="flex flex-col mt-10 mx-auto">
         <div className="flex flex-col mt-5">
           <label htmlFor="name">Name</label>
@@ -31,7 +30,7 @@ const Profile = () => {
         </div>
 
         <fieldset className="border-t mt-10 border-slate-300">
-        <legend class="mx-auto px-4  text-xl">Change Password</legend>
+        <legend className="mx-auto px-4  text-xl">Change Password</legend>
         </fieldset>
 
         <div className="flex flex-col mt-5">

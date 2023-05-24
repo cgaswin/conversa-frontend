@@ -1,13 +1,12 @@
 import React from "react";
-
 import Navbar from "../components/Navbar";
-import Home from "../components/Home";
+import { Outlet } from "react-router-dom";
 
 const Landing = () => {
   return (
     <div className="h-screen">
       <Navbar />
-      <Home/>
+      <Outlet />
     </div>
   );
 };

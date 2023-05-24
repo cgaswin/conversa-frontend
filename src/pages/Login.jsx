@@ -1,11 +1,9 @@
 import React from "react";
-import Navbar from "../components/Navbar";
 import googleLogo from "../assets/google.svg";
 
 const Login = () => {
   return (
     <>
-      <Navbar />
       <div className="flex flex-col  justify-center items-center font-Outfit">
         <h3 className="text-3xl">Welcome back</h3>
         <p className="text-gray-400 pt-5 text-center mx-5">
