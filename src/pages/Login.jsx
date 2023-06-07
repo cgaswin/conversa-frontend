@@ -1,7 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import googleLogo from "../assets/google.svg";
+import axios from "../api/axios";
 
 const Login = () => {
+  const [values,setValues] = useState({
+    email:"",
+    password:"",
+    error:"",
+    loading:false,
+    didRedirect:false
+  })
+
+
+  const handleChange = (e) => {
+    setValues({
+      ...values,
+      [e.target.name]:[e.target.value]
+    })
+  }
+
+
+  const formSubmit = async (event) => {
+    event.preventDefault();
+    if (!values.email) {
+      alert("email required");
+      return;
+    }
+    if (!values.password) {
+      alert("password required");
+      return;
+    }
+    try {
+      const {data} = await axios.post("/login",{email,password});
+      console.log(data)
+    } catch (error) {
+      console.log(error)
+    }
+  };
   return (
     <>
       <div className="flex flex-col  justify-center items-center font-Outfit">
@@ -22,7 +57,9 @@ const Login = () => {
             <input
               className="border mt-1 px-6 w-[350px] py-2 rounded-xl"
               type="text"
-              name="email"
+              name={email}
+              onChange={handleChange}
+              value={values.email}
               placeholder="Enter your email"
             />
           </div>
@@ -32,25 +69,19 @@ const Login = () => {
             <input
               className="border mt-1 px-6 w-[350px] py-2 rounded-xl"
               type="password"
-              name="password"
+              name={password}
+              onChange={handleChange}
+              value={values.password}
               placeholder="Enter your password"
             />
           </div>
 
-          <div className="flex mt-6 justify-between ">
-            <div className="flex">
-            <input type="checkbox" id="remember-me" />
-            <label htmlFor="remember-me" className="ml-2">Remember me</label>
-            </div>
-
-            <p className="text-indigo-400">Forgot Password</p>
-          </div>
-
-          <button className="bg-black text-white mt-8 px-40 py-3 rounded-xl hover:shadow-sm hover:shadow-slate-400">
+          <button
+            className="bg-black text-white mt-8 px-40 py-3 rounded-xl hover:shadow-sm hover:shadow-slate-400"
+            onClick={formSubmit}
+          >
             Login
           </button>
-
-          
         </form>
       </div>
     </>

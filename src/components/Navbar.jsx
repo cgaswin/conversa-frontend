@@ -36,12 +36,12 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-      <div className="md:hidden ml-auto mr-2">
+      <div className="md:hidden ml-auto  mr-2">
         {!isOpen && <RxHamburgerMenu size={20} onClick={toggleNav} />}
       </div>
 
       {isOpen && (
-        <div className="md:hidden py-5 px-5 z-50 shadow bg-white fixed right-0">
+        <div className="md:hidden w-full -mt-8 py-5 px-5 z-50 shadow bg-white fixed right-0">
             <div className="flex justify-end pr-2 pt-1">
             <div onClick={toggleNav} className="-m-4">
               {isOpen && <RxCross2 size={20} />}
