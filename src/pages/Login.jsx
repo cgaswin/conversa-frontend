@@ -1,40 +1,62 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import {useNavigate } from "react-router-dom";
 import googleLogo from "../assets/google.svg";
 import axios from "../api/axios";
+import { authenticate, isAuthenticated } from "../utils/auth";
+import { UserContext } from "../context/UserContext.jsx";
 
 const Login = () => {
-  const [values,setValues] = useState({
-    email:"",
-    password:"",
-    error:"",
-    loading:false,
-    didRedirect:false
-  })
+
+  const navigate = useNavigate();
+  const {changeUsername,handleLogin} = useContext(UserContext)
+
+  useEffect(()=>{
+    if(isAuthenticated()){
+      navigate("/dashboard")
+    }
+  },[navigate,isAuthenticated])
+
+
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+    error: "",
+    loading: false,
+    didRedirect: false,
+  });
 
 
   const handleChange = (e) => {
     setValues({
       ...values,
-      [e.target.name]:[e.target.value]
-    })
-  }
-
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const formSubmit = async (event) => {
     event.preventDefault();
-    if (!values.email) {
+    const { email, password, error, loading, didRedirect } = values;
+    if (!email) {
       alert("email required");
       return;
     }
-    if (!values.password) {
+    if (!password) {
       alert("password required");
       return;
     }
+
+    console.log(email, password);
     try {
-      const {data} = await axios.post("/login",{email,password});
-      console.log(data)
+      const { data } = await axios.post("/login", { email, password });
+      console.log(data);
+      if(data.success){
+        changeUsername(data.user.name)
+        authenticate(data.token)
+        handleLogin(true)
+        navigate("/dashboard")
+      }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
   return (
@@ -57,7 +79,7 @@ const Login = () => {
             <input
               className="border mt-1 px-6 w-[350px] py-2 rounded-xl"
               type="text"
-              name={email}
+              name="email"
               onChange={handleChange}
               value={values.email}
               placeholder="Enter your email"
@@ -69,7 +91,7 @@ const Login = () => {
             <input
               className="border mt-1 px-6 w-[350px] py-2 rounded-xl"
               type="password"
-              name={password}
+              name="password"
               onChange={handleChange}
               value={values.password}
               placeholder="Enter your password"
@@ -84,7 +106,7 @@ const Login = () => {
           </button>
         </form>
       </div>
-    </>
+      </>
   );
 };
 

@@ -1,5 +1,6 @@
 import axios from "../api/axios";
 
+
 export const signup = async (user) => {
   return await axios
     .post("/signup", user)
@@ -16,20 +17,19 @@ export const signin = async (user) => {
     .catch((error) => error);
 };
 
-export const authenticate = (data, next) => {
+export const authenticate = (data) => {
   if (typeof window !== undefined) {
     localStorage.setItem("jwt", JSON.stringify(data));
-    next();
+    console.log("set token in local storage")
   }
 };
 
-export const signout = async (next) => {
+export const signout = async () => {
   if (typeof window !== undefined) {
     localStorage.removeItem("jwt");
-    next();
 
     return await axios
-      .get("/signout")
+      .get("/logout")
       .then((response) => console.log("signout success"))
       .catch((error) => console.log(error));
   }
@@ -40,7 +40,7 @@ export const isAuthenticated = () => {
         return false
       }
       if(localStorage.getItem("jwt")){
-        return JSON.parse(localStorage.getItem("jwt"))
+        return true
       }else{
         return false
       }
