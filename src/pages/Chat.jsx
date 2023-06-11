@@ -4,15 +4,44 @@ import { ImCross } from "react-icons/im";
 import { CiMicrophoneOn } from "react-icons/ci";
 import ChatBoxLeft from "../components/ChatBoxLeft";
 import ChatBoxRight from "../components/ChatBoxRight";
+// import { createSpeechlySpeechRecognition } from '@speechly/speech-recognition-polyfill';
+// import SpeechRecognition, {
+//   useSpeechRecognition,
+// } from "react-speech-recognition";
 
 const Chat = () => {
   const [themeValue, setThemeValue] = useState("");
-  const [chat, setChat] = useState("test");
+  const [chat, setChat] = useState("");
   const [chatReply, setChatReply] = useState("dummy message");
+  const [mic, setMic] = useState(false);
 
-  const handleChat = () => {
-    setChat("replace dummy");
-  };
+  
+
+  //speech
+//   const appId = import.meta.env.APP_ID;
+// const SpeechlySpeechRecognition = createSpeechlySpeechRecognition(appId);
+// SpeechRecognition.applyPolyfill(SpeechlySpeechRecognition);
+
+//   const startListening = () =>
+//     SpeechRecognition.startListening({ continuous: true, language: "en-IN" });
+//   const { transcript, browserSupportsSpeechRecognition } =
+//     useSpeechRecognition();
+
+//   if (!browserSupportsSpeechRecognition) {
+//     return <span>Browser does not support speech recognition</span>
+//   }
+
+//   const handleMic = () => {
+//     setMic(!mic);
+//     if (mic) {
+//       startListening();
+//       setChat({ transcript });
+//     } else {
+//       SpeechRecognition.stopListening();
+//     }
+//   };
+
+  //speech end
 
   const handleTheme = (event) => {
     setThemeValue(event.target.value);
@@ -48,15 +77,23 @@ const Chat = () => {
         <ChatBoxRight text={chatReply} />
       </div>
 
-      <div className="flex fixed bottom-10">
+      <div className=" flex gap-3 fixed bottom-10">
+        <div>
           <input
-            className="border mt-1 px-6  py-10   rounded-xl "
+            className="border mt-1 px-6  py-6   rounded-xl "
             type="text"
             name="chat"
             value={chat}
             placeholder="press on the mic to speak"
           />
-        <button onClick={handleChat} className="rounded-full w-20 h-20 bg-blue-300 hover:bg-blue-500 fixed bottom-10 right-10">
+        </div>
+        <button className="bg-red-600 rounded-md px-8 text-white py-2 outline-none">
+          Reset
+        </button>
+        <button
+          // onClick={handleMic}
+          className="rounded-full w-20 h-20 bg-blue-300 hover:bg-blue-500 fixed bottom-10 right-10"
+        >
           <CiMicrophoneOn color="white" size={50} className="mx-auto" />
         </button>
       </div>

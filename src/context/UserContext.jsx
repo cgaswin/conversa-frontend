@@ -4,6 +4,7 @@ export const UserContext = createContext()
 
 export function UserProvider({children}){
     const [username,setUsername] = useState('');
+    const [mail,setMail] = useState('');
     const [loggedIn,setLoggedIn] = useState(false)
 
     const handleLogin = (value) => {
@@ -38,8 +39,12 @@ export function UserProvider({children}){
         setUsername(name);
     }
 
+    const changeMail = (mail)=> {
+        setMail(mail);
+    }
+
     return (
-        <UserContext.Provider value={{username,changeUsername,loggedIn,handleLogin}}>
+        <UserContext.Provider value={{username,changeUsername,loggedIn,handleLogin,mail,setMail}}>
             {children}
         </UserContext.Provider>
     )

@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import {  UserContext } from "../context/UserContext.jsx";
+
 
 
 const Profile = () => {
 
+  const {mail,username} = useContext(UserContext)
 
   return (
     <div className="flex mx-auto">
@@ -13,7 +16,7 @@ const Profile = () => {
             className="border mt-1 px-6  md:w-[350px] bg-gray-100 py-2 rounded-xl"
             type="text"
             name="name"
-            value={"aswin"}
+            value={username}
             disabled
           />
         </div>
@@ -24,7 +27,7 @@ const Profile = () => {
             className="border mt-1 px-6 md:w-[350px] bg-gray-100 py-2 rounded-xl"
             type="text"
             name="email"
-            value={"testmail@gmail.com"}
+            value={mail}
             disabled
           />
         </div>
