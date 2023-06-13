@@ -4,6 +4,7 @@ import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
 import "./index.css";
 import { UserProvider } from "./context/UserContext";
+import regeneratorRuntime from "regenerator-runtime";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

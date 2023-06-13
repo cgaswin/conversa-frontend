@@ -1,11 +1,15 @@
-import { Children, createContext, useContext, useEffect, useState } from "react";
+import {  createContext, useEffect, useState } from "react";
 
 export const UserContext = createContext()
 
 export function UserProvider({children}){
     const [username,setUsername] = useState('');
-    const [mail,setMail] = useState('');
     const [loggedIn,setLoggedIn] = useState(false)
+
+    if(!username){
+        console.log("username not available")
+    }
+    
 
     const handleLogin = (value) => {
         setLoggedIn(value)
@@ -39,12 +43,8 @@ export function UserProvider({children}){
         setUsername(name);
     }
 
-    const changeMail = (mail)=> {
-        setMail(mail);
-    }
-
     return (
-        <UserContext.Provider value={{username,changeUsername,loggedIn,handleLogin,mail,setMail}}>
+        <UserContext.Provider value={{username,changeUsername,loggedIn,handleLogin,}}>
             {children}
         </UserContext.Provider>
     )

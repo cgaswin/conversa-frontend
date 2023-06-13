@@ -5,15 +5,15 @@ import {  UserContext } from "../context/UserContext.jsx";
 
 const Profile = () => {
 
-  const {mail,username} = useContext(UserContext)
+  const {username} = useContext(UserContext)
 
   return (
-    <div className="flex mx-auto">
+    <div className="flex mx-auto ">
       <div className="flex flex-col mt-10 mx-auto">
         <div className="flex flex-col mt-5">
           <label htmlFor="name">Name</label>
           <input
-            className="border mt-1 px-6  md:w-[350px] bg-gray-100 py-2 rounded-xl"
+            className="border mt-1 px-6  w-full bg-gray-100 py-2 rounded-xl"
             type="text"
             name="name"
             value={username}
@@ -24,10 +24,10 @@ const Profile = () => {
         <div className="flex flex-col mt-5">
           <label htmlFor="email">Email</label>
           <input
-            className="border mt-1 px-6 md:w-[350px] bg-gray-100 py-2 rounded-xl"
+            className="border mt-1 px-6 w-full bg-gray-100 py-2 rounded-xl"
             type="text"
             name="email"
-            value={mail}
+            value={"mail"}
             disabled
           />
         </div>
