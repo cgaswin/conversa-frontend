@@ -91,7 +91,7 @@ const DashboardNav = () => {
                   } `}
                   onClick={() => handleTab("chat")}
                 >
-                  <NavLink to="/chat">
+                  <NavLink to="/dashboard/chat">
                     <div className="flex items-center">
                       <img src={chat} />
                       <p className="uppercase pl-2 ">chat</p>

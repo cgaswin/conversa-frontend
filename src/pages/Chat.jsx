@@ -4,47 +4,29 @@ import { ImCross } from "react-icons/im";
 import { CiMicrophoneOn } from "react-icons/ci";
 import ChatBoxLeft from "../components/ChatBoxLeft";
 import ChatBoxRight from "../components/ChatBoxRight";
-// import { createSpeechlySpeechRecognition } from '@speechly/speech-recognition-polyfill';
-// import SpeechRecognition, {
-//   useSpeechRecognition,
-// } from "react-speech-recognition";
-// import regeneratorRuntime from "regenerator-runtime";
 
 const Chat = () => {
   const [themeValue, setThemeValue] = useState("");
   const [chatReply, setChatReply] = useState("dummy message");
-  const [microphone, setMicrophone] = useState(false);
-
-
   const [isListening, setIsListening] = useState(false)
-  const [chat, setChat] = useState(null)
-  const SpeechRecognition =
-  window.SpeechRecognition || window.webkitSpeechRecognition
+  const [chat, setChat] = useState("")
+  const [message,setMessage] = useState('')
+
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
   const  mic = new SpeechRecognition()
 
   mic.continuous = true
   mic.interimResults = true
   mic.lang = 'en-US'
-    
-
-
   
 
   const handleListen = () => {
     if (isListening) {
       mic.start()
-      mic.onend = () => {
-        console.log('continue..')
-        mic.start()
-      }
+      console.log("mic on")
     } else {
       mic.stop()
-      mic.onend = () => {
-        console.log('Stopped Mic on Click')
-      }
-    }
-    mic.onstart = () => {
-      console.log('Mics on')
+      console.log("mic off")
     }
 
     mic.onresult = event => {
@@ -64,6 +46,14 @@ const Chat = () => {
     setChat("")
   }
   
+  const handleSubmit = async() => {
+    console.log(chat)
+    await mic.stop()
+    setChat("")
+    setMessage(message)
+
+  }
+
   const handleTheme = (event) => {
     setThemeValue(event.target.value);
   };
@@ -73,7 +63,7 @@ const Chat = () => {
   }, [isListening])
 
   return (
-    <div className="flex   flex-col shadow-inner p-5 w-full mx-auto md:border-l md:b-l-black-2">
+    <div className="flex h-screen  flex-col shadow-inner p-5 w-full mx-auto md:border-l md:b-l-black-2">
       <div className="flex items-center justify-around gap-3 rounded-sm p-2 bg-slate-50">
         <div className="flex items-center gap-3 ">
           <img src={bot} />
@@ -97,10 +87,10 @@ const Chat = () => {
         </button>
       </div>
 
-      <div className="flex flex-col justify-between h-full  ">
+      <div className="flex  flex-col justify-between h-full  ">
       <div>
         <ChatBoxLeft text={chatReply} />
-        <ChatBoxRight text={chatReply} />
+        { message && <ChatBoxRight text={message} />}
       </div>
       <div className=" flex flex-row items-center gap-4 ">
         <div className="w-full flex gap-3 flex-row items-center justify-between">
@@ -108,11 +98,15 @@ const Chat = () => {
             className="border w-full mt-1 px-6  py-6   rounded-xl "
             type="text"
             name="chat"
+            readOnly
             value={chat}
             placeholder="press on the mic to speak"
           />
-        <button onClick={handleReset} className="bg-red-600  rounded-md px-8 text-white py-6 outline-none">
+        <button onClick={handleReset} className="bg-red-600 hover:bg-red-800 rounded-md px-8 text-white py-6 outline-none">
           Reset
+        </button>
+        <button onClick={handleSubmit} className="bg-green-600  hover:bg-red-800 rounded-md px-8 text-white py-6 outline-none">
+          Submit 
         </button>
         </div>
         <div>

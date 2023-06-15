@@ -10,28 +10,6 @@ const Profile = () => {
   return (
     <div className="flex mx-auto ">
       <div className="flex flex-col mt-10 mx-auto">
-        <div className="flex flex-col mt-5">
-          <label htmlFor="name">Name</label>
-          <input
-            className="border mt-1 px-6  w-full bg-gray-100 py-2 rounded-xl"
-            type="text"
-            name="name"
-            value={username}
-            disabled
-          />
-        </div>
-
-        <div className="flex flex-col mt-5">
-          <label htmlFor="email">Email</label>
-          <input
-            className="border mt-1 px-6 w-full bg-gray-100 py-2 rounded-xl"
-            type="text"
-            name="email"
-            value={"mail"}
-            disabled
-          />
-        </div>
-
         <fieldset className="border-t mt-10 border-slate-300">
         <legend className="mx-auto px-4  text-xl">Change Password</legend>
         </fieldset>
