@@ -49,8 +49,7 @@ const Chat = () => {
   const handleSubmit = async() => {
     console.log(chat)
     await mic.stop()
-    setChat("")
-    setMessage(message)
+    await setChat("")
 
   }
 
@@ -88,9 +87,9 @@ const Chat = () => {
       </div>
 
       <div className="flex  flex-col justify-between h-full  ">
-      <div>
+      <div className="overflow-y-scroll">
         <ChatBoxLeft text={chatReply} />
-        { message && <ChatBoxRight text={message} />}
+        { message.trim().length>0 && <ChatBoxRight text={message} />}
       </div>
       <div className=" flex flex-row items-center gap-4 ">
         <div className="w-full flex gap-3 flex-row items-center justify-between">
@@ -112,7 +111,7 @@ const Chat = () => {
         <div>
         <button
           onClick={()=>setIsListening(prevState => !prevState)}
-          className="rounded-full w-20 h-20 bg-blue-300 hover:bg-blue-500 "
+          className={`rounded-full w-20 h-20 ${isListening?'bg-red-500':'bg-blue-300'} ${isListening? 'hover:bg-red-500':'hover:bg-blue-500'}  `}
         >
           <CiMicrophoneOn color="white" size={50} className="mx-auto" />
         </button>

@@ -69,12 +69,12 @@ const Signup = () => {
       <div className="flex flex-col  justify-center items-center font-Outfit">   
    
         <h3 className="text-3xl">Sign Up</h3>
-        <button className="flex mt-5 rounded-xl items-center px-20 py-2 border border-gray-300">
+        {/* <button className="flex mt-5 rounded-xl items-center px-20 py-2 border border-gray-300">
           <img src={googleLogo} />
           Signup with Google
         </button>
 
-        <p className="text-gray-400 mt-5">or</p>
+        <p className="text-gray-400 mt-5">or</p> */}
 
         <form onSubmit={handleSubmit} className="ml-2">
           <div className="flex mr-4 ml-2 sm:mr-0 sm:ml-0 flex-col">

@@ -8,7 +8,7 @@ import { UserContext } from "../context/UserContext.jsx";
 const Login = () => {
 
   const navigate = useNavigate();
-  const {changeUsername,handleLogin} = useContext(UserContext)
+  const {changeUsername,handleLogin,handleUserId} = useContext(UserContext)
 
   useEffect(()=>{
     if(isAuthenticated()){
@@ -50,7 +50,8 @@ const Login = () => {
       const { data } = await axios.post("/login", { email, password });
       console.log(data);
       if(data.success){
-        changeUsername(data.user.name)
+        await changeUsername(data.user.name)
+        await handleUserId(data.user.user_id)
         authenticate(data.token)
         handleLogin(true)
         navigate("/dashboard")
@@ -66,12 +67,12 @@ const Login = () => {
         <p className="text-gray-400 pt-5 text-center mx-5">
           We've missed you! Please sign in to catch up on what you've missed
         </p>
-        <button className="flex mt-5 rounded-xl items-center px-20 py-2 border border-gray-300">
+        {/* <button className="flex mt-5 rounded-xl items-center px-20 py-2 border border-gray-300">
           <img src={googleLogo} />
           Login with Google
         </button>
 
-        <p className="text-gray-400 mt-5">or</p>
+        <p className="text-gray-400 mt-5">or</p> */}
 
         <form className="mt-5 ">
           <div className="flex flex-col">

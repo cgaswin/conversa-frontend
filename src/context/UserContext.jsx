@@ -5,11 +5,11 @@ export const UserContext = createContext()
 export function UserProvider({children}){
     const [username,setUsername] = useState('');
     const [loggedIn,setLoggedIn] = useState(false)
+    const [userId,setUserId] = useState('')
 
-    if(!username){
-        console.log("username not available")
+    const handleUserId = (id) => {
+        setUserId(id)
     }
-    
 
     const handleLogin = (value) => {
         setLoggedIn(value)
@@ -44,7 +44,7 @@ export function UserProvider({children}){
     }
 
     return (
-        <UserContext.Provider value={{username,changeUsername,loggedIn,handleLogin,}}>
+        <UserContext.Provider value={{username,changeUsername,loggedIn,handleLogin,userId,handleUserId}}>
             {children}
         </UserContext.Provider>
     )
