@@ -7,13 +7,13 @@ import logout from "../assets/logout.svg";
 import { NavLink, useNavigate } from "react-router-dom";
 import { RxHamburgerMenu, RxCross2 } from "react-icons/rx";
 import {  UserContext } from "../context/UserContext.jsx";
-import {isAuthenticated, signout} from "../utils/auth"
+import { signout} from "../utils/auth"
 
 const DashboardNav = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [activeTab, setActiveTab] = useState("home");
   const [windowWidth, setWindowWidth] = useState(true);
-  const {username,loggedIn,handleLogin} = useContext(UserContext)
+  const {loggedIn,handleLogin} = useContext(UserContext)
 
   const handleSignout = () => {
       signout()
@@ -21,6 +21,7 @@ const DashboardNav = () => {
   }
 
     const navigate = useNavigate();
+    const username = JSON.parse(localStorage.getItem("username"));
 
   useEffect(()=>{
     if(!loggedIn){

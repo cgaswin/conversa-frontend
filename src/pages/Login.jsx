@@ -50,9 +50,7 @@ const Login = () => {
       const { data } = await axios.post("/login", { email, password });
       console.log(data);
       if(data.success){
-        await changeUsername(data.user.name)
-        await handleUserId(data.user.user_id)
-        authenticate(data.token)
+        authenticate(data)
         handleLogin(true)
         navigate("/dashboard")
       }

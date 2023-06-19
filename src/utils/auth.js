@@ -19,8 +19,10 @@ export const signin = async (user) => {
 
 export const authenticate = (data) => {
   if (typeof window !== undefined) {
-    localStorage.setItem("jwt", JSON.stringify(data));
-    console.log("set token in local storage")
+    localStorage.setItem("jwt", JSON.stringify(data.token));
+    localStorage.setItem("username", JSON.stringify(data.user.name));
+    localStorage.setItem("userId", JSON.stringify(data.user.user_id));
+    console.log("set values in local storage")
   }
 };
 

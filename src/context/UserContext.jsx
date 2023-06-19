@@ -3,13 +3,8 @@ import {  createContext, useEffect, useState } from "react";
 export const UserContext = createContext()
 
 export function UserProvider({children}){
-    const [username,setUsername] = useState('');
     const [loggedIn,setLoggedIn] = useState(false)
-    const [userId,setUserId] = useState('')
 
-    const handleUserId = (id) => {
-        setUserId(id)
-    }
 
     const handleLogin = (value) => {
         setLoggedIn(value)
@@ -38,13 +33,8 @@ export function UserProvider({children}){
         }
       };
       
-
-    const changeUsername = (name) => {
-        setUsername(name);
-    }
-
     return (
-        <UserContext.Provider value={{username,changeUsername,loggedIn,handleLogin,userId,handleUserId}}>
+        <UserContext.Provider value={{loggedIn,handleLogin}}>
             {children}
         </UserContext.Provider>
     )

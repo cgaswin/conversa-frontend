@@ -1,14 +1,14 @@
 import React,{useContext, useState} from "react";
 import axios from "../api/axios"
-import UserContext from "../context/UserContext";
 
 const Profile = () => {
 
   const [newPassword,setNewPassword] = useState("")
   const [confirmPassword,setConfirmPassword] = useState("")
 
-  const {userId} = useContext(UserContext)
-
+  const token = localStorage.getItem("jwt");
+  const userID = localStorage.getItem("userID")
+  
 
   const handleSubmit = async(event) => {
    if(newPassword!=confirmPassword){
@@ -23,14 +23,18 @@ const Profile = () => {
    else{
     event.preventDefault();
       try {
-        const {data} = await axios.put("/password/update",{id:userId,newPassword})
+        const {data} = await axios.put("/password/update",{id:userID,newPassword},{
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
         setConfirmPassword("")
         setNewPassword("")
         if(data.success){
           alert("password succesfully changed")
         }
       } catch (error) {
-        console.log(error.respose.data)
+        console.log(error.response.data)
       }
    }
   }
