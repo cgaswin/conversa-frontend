@@ -29,6 +29,9 @@ export const authenticate = (data) => {
 export const signout = async () => {
   if (typeof window !== undefined) {
     localStorage.removeItem("jwt");
+    localStorage.removeItem("username");
+    localStorage.removeItem("userId");
+
 
     return await axios
       .get("/logout")

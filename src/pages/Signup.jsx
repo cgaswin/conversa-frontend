@@ -60,7 +60,6 @@ const Signup = () => {
       .catch(err=> console.log(err));
   };
 
-  console.log(form)
 
 
 

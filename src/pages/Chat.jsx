@@ -4,6 +4,7 @@ import { ImCross } from "react-icons/im";
 import { CiMicrophoneOn } from "react-icons/ci";
 import ChatBoxLeft from "../components/ChatBoxLeft";
 import ChatBoxRight from "../components/ChatBoxRight";
+import ChatBubble from "../components/ChatBubble";
 
 const Chat = () => {
   const [themeValue, setThemeValue] = useState("");
@@ -46,9 +47,17 @@ const Chat = () => {
     setChat("")
   }
   
+  
+
   const handleSubmit = async() => {
     console.log(chat)
     await mic.stop()
+    const newMessage = {
+      text: chat,
+      user_role: "user",
+      time: new Date().toLocaleTimeString() // get current time in readable format
+    };
+    messages.push(newMessage)
     await setChat("")
 
   }
@@ -88,7 +97,7 @@ const Chat = () => {
 
       <div className="flex  flex-col justify-between h-full  ">
       <div className="overflow-y-scroll">
-        <ChatBoxLeft text={chatReply} />
+        <ChatBubble messages={messages} />
       </div>
       <div className=" flex flex-row items-center gap-4 ">
         <div className="w-full flex gap-3 flex-row items-center justify-between">
