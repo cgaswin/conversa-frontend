@@ -7,7 +7,7 @@ const Profile = () => {
   const [confirmPassword,setConfirmPassword] = useState("")
 
   const token = localStorage.getItem("jwt");
-  const userID = localStorage.getItem("userID")
+  const userID = localStorage.getItem("userId")
   
 
   const handleSubmit = async(event) => {
@@ -23,7 +23,7 @@ const Profile = () => {
    else{
     event.preventDefault();
       try {
-        const {data} = await axios.put("/password/update",{id:userID,newPassword},{
+        const {data} = await axios.put("/password/update",{id:userId,newPassword},{
           headers: {
             'Authorization': `Bearer ${token}`
           }
