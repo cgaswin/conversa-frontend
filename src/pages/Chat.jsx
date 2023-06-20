@@ -50,7 +50,7 @@ const Chat = () => {
   
 
   const handleSubmit = async() => {
-    console.log(chat)
+    console.log(chat) 
     await mic.stop()
     const newMessage = {
       text: chat,
