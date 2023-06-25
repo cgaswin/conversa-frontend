@@ -23,7 +23,7 @@ const Profile = () => {
    else{
     event.preventDefault();
       try {
-        const {data} = await axios.put("/password/update",{id:userId,newPassword},{
+        const {data} = await axios.put("/password/update",{id:userID,newPassword},{
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -34,7 +34,7 @@ const Profile = () => {
           alert("password succesfully changed")
         }
       } catch (error) {
-        console.log(error.response.data)
+        console.log(error)
       }
    }
   }

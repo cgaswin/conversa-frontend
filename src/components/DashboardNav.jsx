@@ -100,7 +100,7 @@ const DashboardNav = () => {
                   </NavLink>
                 </div>
 
-                <div
+                {/* <div
                   className={`flex ml-12 pl-8 border-black cursor-pointer ${
                     activeTab == "person"
                       ? " border-l-4  border-l-black-500"
@@ -114,7 +114,7 @@ const DashboardNav = () => {
                       <p className="uppercase pl-2">Profile</p>
                     </div>
                   </NavLink>
-                </div>
+                </div> */}
 
                 <button
                   onClick={handleSignout}
@@ -168,7 +168,7 @@ const DashboardNav = () => {
                 </NavLink>
               </div>
 
-              <div
+              {/* <div
                 className={`flex ml-12 pl-8 border-black cursor-pointer ${
                   activeTab == "person" ? " border-l-4  border-l-black-500" : ""
                 } `}
@@ -180,7 +180,7 @@ const DashboardNav = () => {
                     <p className="uppercase pl-2">Profile</p>
                   </div>
                 </NavLink>
-              </div>
+              </div> */}
 
               <button
                 onClick={handleSignout}
