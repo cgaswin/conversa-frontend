@@ -54,7 +54,7 @@ const Chat = () => {
     await mic.stop()
     const newMessage = {
       text: chat,
-      user_role: "user",
+      user_role: "bot",
       time: new Date().toLocaleTimeString() // get current time in readable format
     };
     messages.push(newMessage)
