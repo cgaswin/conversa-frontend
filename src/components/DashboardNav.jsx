@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import Avatar from "../components/Avatar";
 import dashboard from "../assets/dashboard.svg";
 import chat from "../assets/chat.svg";
-import person from "../assets/person.svg";
+// import person from "../assets/person.svg";
 import logout from "../assets/logout.svg";
 import { NavLink, useNavigate } from "react-router-dom";
 import { RxHamburgerMenu, RxCross2 } from "react-icons/rx";

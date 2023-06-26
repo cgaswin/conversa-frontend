@@ -5,8 +5,15 @@ import { CiMicrophoneOn } from "react-icons/ci";
 import ChatBoxLeft from "../components/ChatBoxLeft";
 import ChatBoxRight from "../components/ChatBoxRight";
 import ChatBubble from "../components/ChatBubble";
+import { useParams,useNavigate } from "react-router-dom";
 
 const Chat = () => {
+
+  let {chatId} = useParams();
+  console.log(chatId)
+
+  const navigate = useNavigate();
+
   const [themeValue, setThemeValue] = useState("");
   const [chatReply, setChatReply] = useState("dummy message");
   const [isListening, setIsListening] = useState(false)
@@ -47,6 +54,12 @@ const Chat = () => {
     setChat("")
   }
   
+  const abortChat = () => {
+    localStorage.removeItem("chatId");
+    alert("chat aborted");
+    navigate(`/dashboard`)
+   
+  }
   
 
   const handleSubmit = async() => {
@@ -90,7 +103,7 @@ const Chat = () => {
             </select>
           </label>
         </div>
-        <button className="bg-red-400 rounded-md px-2 py-2">
+        <button onClick={abortChat} className="bg-red-400 rounded-md px-2 py-2">
           <ImCross color="white" />
         </button>
       </div>

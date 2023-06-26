@@ -1,23 +1,23 @@
-import React,{useState,useEffect} from 'react'
-import { AiOutlinePlus } from "react-icons/ai";
+import React from 'react'
 import ChatCard from "./ChatCard";
+import NewChat from './NewChat';
 
 const AllChats = () => {
-    const [showCreateChat, setShowCreateChat] = useState(true);
+    // const [showCreateChat, setShowCreateChat] = useState(true);
 
-    useEffect(() => {
-      const handleResize = () => {
-        setShowCreateChat(window.innerWidth > 400);
-      };
+    // useEffect(() => {
+    //   const handleResize = () => {
+    //     setShowCreateChat(window.innerWidth > 400);
+    //   };
   
-      handleResize(); // Initial check on component mount
+    //   handleResize(); // Initial check on component mount
   
-      window.addEventListener("resize", handleResize);
+    //   window.addEventListener("resize", handleResize);
   
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
-    }, []);
+    //   return () => {
+    //     window.removeEventListener("resize", handleResize);
+    //   };
+    // }, []);
   return (
     <div className="flex flex-col ">
         <div className="flex justify-between overflow-x-hidden  w-full mt-10 pl-10">
@@ -25,12 +25,7 @@ const AllChats = () => {
             <h2 className="text-3xl">Chats</h2>
             <p className="text-gray-400">Recent chats</p>
           </div>
-          <div  >
-            <button  className="bg-black text-white flex items-center gap-2 justify-around w-auto px-5  py-5 mr-14 sm:px-10 sm:py-5 sm:mr-20 rounded-xl cursor-pointer transform transition duration-500 hover:md:scale-105">
-              <AiOutlinePlus />
-              {showCreateChat ? "Create New Chat" : ""}
-            </button>
-          </div>
+          <NewChat/>
         </div>
         <div className=" -ml-10 mt-5 sm:ml-10">
           <ChatCard />
