@@ -8,6 +8,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { RxHamburgerMenu, RxCross2 } from "react-icons/rx";
 import {  UserContext } from "../context/UserContext.jsx";
 import { signout} from "../utils/auth"
+import { v4 as uuidv4 } from 'uuid';
 
 const DashboardNav = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -22,6 +23,17 @@ const DashboardNav = () => {
 
     const navigate = useNavigate();
     const username = JSON.parse(localStorage.getItem("username"));
+
+    const chatClick = () =>{
+      let chatId = JSON.parse(localStorage.getItem("chatId"));
+      if(chatId){
+          navigate(`/dashboard/chat/${chatId}`)
+      }else{
+          chatId = uuidv4();
+          localStorage.setItem("chatId", JSON.stringify(chatId));
+          navigate(`/dashboard/chat/${chatId}`)
+      }
+    }
 
   useEffect(()=>{
     if(!loggedIn){
@@ -92,12 +104,12 @@ const DashboardNav = () => {
                   } `}
                   onClick={() => handleTab("chat")}
                 >
-                  <NavLink to="/dashboard/chat">
+                  <button onClick={chatClick}>
                     <div className="flex items-center">
                       <img src={chat} />
                       <p className="uppercase pl-2 ">chat</p>
                     </div>
-                  </NavLink>
+                  </button >
                 </div>
 
                 {/* <div
@@ -160,12 +172,12 @@ const DashboardNav = () => {
                 } `}
                 onClick={() => handleTab("chat")}
               >
-                <NavLink to="/dashboard/chat">
+                <button onClick={chatClick}>
                   <div className="flex items-center">
                     <img src={chat} />
                     <p className="uppercase pl-2 ">chat</p>
                   </div>
-                </NavLink>
+                </button>
               </div>
 
               {/* <div

@@ -2,15 +2,15 @@ import React, { useEffect, useState } from "react";
 import bot from "../assets/bot.png";
 import { ImCross } from "react-icons/im";
 import { CiMicrophoneOn } from "react-icons/ci";
-import ChatBoxLeft from "../components/ChatBoxLeft";
-import ChatBoxRight from "../components/ChatBoxRight";
 import ChatBubble from "../components/ChatBubble";
 import { useParams,useNavigate } from "react-router-dom";
+import axios from "../api/axios";
+
 
 const Chat = () => {
 
   let {chatId} = useParams();
-  console.log(chatId)
+
 
   const navigate = useNavigate();
 
@@ -61,17 +61,26 @@ const Chat = () => {
    
   }
   
+  let userId = JSON.parse(localStorage.getItem("userId"));
 
   const handleSubmit = async() => {
-    console.log(chat) 
     await mic.stop()
     const newMessage = {
-      text: chat,
+      // text: chat,
+      text:"hello",
       user_role: "user",
-      time: new Date().toLocaleTimeString() // get current time in readable format
     };
     messages.push(newMessage)
     await setChat("")
+
+    try {
+      const {data} = await axios.post("/chat",{newMessage,chatId,userId})
+      console.log(data)
+      
+    } catch (error) {
+      console.log(error)
+    }
+
 
   }
 

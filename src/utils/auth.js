@@ -31,6 +31,8 @@ export const signout = async () => {
     localStorage.removeItem("jwt");
     localStorage.removeItem("username");
     localStorage.removeItem("userId");
+    localStorage.removeItem("chatId");
+
 
 
     return await axios

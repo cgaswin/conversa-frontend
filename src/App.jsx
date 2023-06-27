@@ -21,7 +21,7 @@ function App() {
         </Route>
         <Route path="/dashboard" element={<Dashboard />} >
         <Route index element={<AllChats />} />
-        <Route path="chat/:id" element={<Chat />} />
+        <Route path="chat/:chatId" element={<Chat />} />
         <Route path="profile" element={<Profile />} />
         </Route>
         <Route path="*" element={<Error/>}/>
