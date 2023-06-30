@@ -45,8 +45,7 @@ const Login = () => {
       return;
     }
 
-    console.log(email, password);
-    console.log(import.meta.env.VITE_BACKEND_URL)
+    
     try {
       const { data } = await axios.post("/login", { email, password },{headers: {
         'Access-Control-Allow-Origin': '*',

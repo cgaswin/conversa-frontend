@@ -4,12 +4,12 @@ import ChatBoxLeft from './ChatBoxLeft';
 
 const ChatBubble = ({messages}) => {
     const renderMessage = (message) => {
-        if (message.user_role === "user") {
-          return <ChatBoxRight text={message.text} />;
-        } else if (message.user_role === "bot") {
-          return <ChatBoxLeft text={message.text} />;
-        }
+       return <ChatBoxRight text={message.text} error={message.error}/>
       };
+
+      const renderBotMessage = (message) => {
+         return <ChatBoxLeft text={message.reply}/>
+        };
 
       // Sort messages by timestamp
   const sortedMessages = messages.sort((a, b) =>
@@ -20,7 +20,11 @@ const ChatBubble = ({messages}) => {
     return (
         <div className="flex flex-col items-start m gap-2">
       {sortedMessages.map((message, index) => (
-        <div className={`mt-${index === 0 ? '0' : '10'}`} key={index}>{renderMessage(message)}</div>
+        <div className={`mt-${index === 0 ? '0' : '10'}`} key={index}>
+          {renderMessage(message)}
+          {renderBotMessage(message)}
+
+          </div>
       ))}
     </div>
       )

@@ -28,6 +28,11 @@ const Chat = () => {
   mic.lang = 'en-US'
   
 
+  //add message to messages array
+  const msgAdder = (message) => {
+    setMessages((prevMessages) => [...prevMessages, message]);
+  };
+
   const handleListen = () => {
     if (isListening) {
       mic.start()
@@ -57,25 +62,21 @@ const Chat = () => {
   const abortChat = () => {
     localStorage.removeItem("chatId");
     alert("chat aborted");
-    navigate(`/dashboard`)
-   
+    navigate(`/dashboard`) 
   }
   
   let userId = JSON.parse(localStorage.getItem("userId"));
 
   const handleSubmit = async() => {
     await mic.stop()
-    const newMessage = {
-      // text: chat,
-      text:"hello",
-      user_role: "user",
-    };
-    messages.push(newMessage)
     await setChat("")
 
     try {
-      const {data} = await axios.post("/chat",{newMessage,chatId,userId})
+      const {data} = await axios.post("/chat",{text:chat,chatId,userId})
       console.log(data)
+      const newMessage = data.newMsg[0]
+      msgAdder(newMessage)
+      await console.log(messages)
       
     } catch (error) {
       console.log(error)

@@ -1,10 +1,18 @@
 import React from 'react'
 
+
 const ChatBoxRight = (props) => {
-  console.log({props})
   return (
-    <div className='bg-gray-50 border fixed right-10  text-black shadow-sm w-fit py-2 rounded-l-2xl rounded-br-2xl  mt-10 px-10'>{props.text}</div>
-  )
-}
+    <div className='flex flex-col mr-10  mt-10'>
+      <div className='bg-gray-50 border text-black shadow-sm w-fit py-2 rounded-l-2xl rounded-br-2xl px-10'>
+        {props.text}
+      </div>
+      {props.error && (
+        <div className='text-red-400 mt-2  px-10'>{props.error}</div>
+      )}
+    </div>
+  );
+};
+
 
 export default ChatBoxRight
