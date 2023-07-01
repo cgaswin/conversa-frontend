@@ -18,11 +18,15 @@ const ChatBubble = ({messages}) => {
 
 
     return (
-        <div className="flex flex-col items-start m gap-2">
+        <div className="flex flex-col w-full gap-2">
       {sortedMessages.map((message, index) => (
         <div className={`mt-${index === 0 ? '0' : '10'}`} key={index}>
+          <div className='flex flex-col w-full self-end'>
           {renderMessage(message)}
+          </div>
+          <div>
           {renderBotMessage(message)}
+          </div>
 
           </div>
       ))}

@@ -73,10 +73,8 @@ const Chat = () => {
 
     try {
       const {data} = await axios.post("/chat",{text:chat,chatId,userId})
-      console.log(data)
       const newMessage = data.newMsg[0]
       msgAdder(newMessage)
-      await console.log(messages)
       
     } catch (error) {
       console.log(error)
@@ -94,8 +92,8 @@ const Chat = () => {
   }, [isListening])
 
   return (
-    <div className="flex h-screen  flex-col shadow-inner p-5 w-full mx-auto md:border-l md:b-l-black-2">
-      <div className="flex items-center justify-around gap-3 rounded-sm p-2 bg-slate-50">
+    <div className="flex max-h-screen   flex-col shadow-inner px-5 pt-5 w-full mx-auto md:border-l md:b-l-black-2">
+      <div className="flex items-center justify-around gap-3 rounded-sm  bg-slate-50">
         <div className="flex items-center gap-3 ">
           <img src={bot} />
           <h4>Your Assistant</h4>
@@ -119,7 +117,7 @@ const Chat = () => {
       </div>
 
       <div className="flex  flex-col justify-between h-full  ">
-      <div className="overflow-y-scroll">
+      <div className="overflow-y-scroll flex w-full">
         <ChatBubble messages={messages} />
       </div>
       <div className=" flex flex-row items-center gap-4 ">
