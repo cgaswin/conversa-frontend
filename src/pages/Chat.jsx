@@ -92,13 +92,13 @@ const Chat = () => {
   }, [isListening])
 
   return (
-    <div className="flex max-h-screen   flex-col shadow-inner px-5 pt-5 w-full mx-auto md:border-l md:b-l-black-2">
+    <div className="flex max-h-screen  flex-col shadow-inner px-5 pt-2 w-full mx-auto md:border-l md:b-l-black-2">
       <div className="flex items-center justify-around gap-3 rounded-sm  bg-slate-50">
         <div className="flex items-center gap-3 ">
           <img src={bot} />
           <h4>Your Assistant</h4>
         </div>
-        <div>
+        {/* <div>
           <label htmlFor="theme">
             <select
               className="text-xl px-2 rounded-sm"
@@ -110,14 +110,14 @@ const Chat = () => {
               <option value="restaurant">Restaurant</option>
             </select>
           </label>
-        </div>
+        </div> */}
         <button onClick={abortChat} className="bg-red-400 rounded-md px-2 py-2">
           <ImCross color="white" />
         </button>
       </div>
 
-      <div className="flex  flex-col justify-between h-full  ">
-      <div className="overflow-y-scroll flex w-full">
+      <div className="flex  flex-col  justify-between h-full  ">
+      <div className=" flex w-full overflow-y-auto max-h-[calc(100vh-180px)]">
         <ChatBubble messages={messages} />
       </div>
       <div className=" flex flex-row items-center gap-4 ">
