@@ -6,10 +6,10 @@ import { signup } from "../utils/auth";
 
 const Signup = () => {
   const [form, setForm] = useState({
-    name: "aswin",
-    email: "test@gmail.com",
-    password: "hello123",
-    confirmPassword: "hello123",
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
     error: "",
     success: false,
   });
