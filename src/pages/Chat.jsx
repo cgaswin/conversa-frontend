@@ -98,19 +98,6 @@ const Chat = () => {
           <img src={bot} />
           <h4>Your Assistant</h4>
         </div>
-        {/* <div>
-          <label htmlFor="theme">
-            <select
-              className="text-xl px-2 rounded-sm"
-              name="theme"
-              value={themeValue}
-              onChange={handleTheme}
-            >
-              <option value="airport">Airport</option>
-              <option value="restaurant">Restaurant</option>
-            </select>
-          </label>
-        </div> */}
         <button onClick={abortChat} className="bg-red-400 rounded-md px-2 py-2">
           <ImCross color="white" />
         </button>
